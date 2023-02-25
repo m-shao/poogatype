@@ -9,10 +9,9 @@ function Letter({keyLetter, correct}) {
     )
 }
 
-function Word({keyWord, active, curLetter, yesLetter}) {
+function Word({keyWord, active}) {
     const wordList = keyWord.split("")
-    const [activeLetter, setActiveLetter] = useState(0)
-    
+
     return(
         <span>{wordList.map((letter, index) => {
             return(
@@ -49,11 +48,15 @@ function TypingField() {
             setActiveWord(activeWord + 1)
             setCurLetter(0)
         } else{
-            console.log(curLetter)
             setCurLetter(curLetter + 1)
             setYesLetter(text[text.length - 1])
         }
     }, [text])
+
+    // useEffect(() => {
+    //     console.log(yesLetter)
+    // }, [yesLetter])
+    
     
     let yes = null
     return (
@@ -63,7 +66,7 @@ function TypingField() {
                     {paraList.map((word, index) => {
                         index === activeWord ? yes = true : yes = false
                         return(
-                            <Word keyWord={word} key={index} active={yes} curLetter={curLetter} yesLetter={yesLetter}/>
+                            <Word keyWord={word} key={index} active={yes}/>
                         )
                     })}
                 </div>
