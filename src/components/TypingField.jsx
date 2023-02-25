@@ -9,15 +9,18 @@ function Letter({keyLetter, correct}) {
     )
 }
 
-function Word({keyWord, active}) {
+function Word({keyWord, active, paragraph, text}) {
     const wordList = keyWord.split("")
+    const i = text.length - 1
 
     return(
         <span>{wordList.map((letter, index) => {
             return(
-                active? 
+                !active? <Letter keyLetter={letter} key={index} correct={2}/> :
+                (index > i ? <Letter keyLetter={letter} key={index} correct={2}/> :
+                (paragraph[i] == text[i]? 
                 <Letter keyLetter={letter} key={index} correct={1}/> : 
-                <Letter keyLetter={letter} key={index} correct={0}/>
+                <Letter keyLetter={letter} key={index} correct={0}/>))
             )
         })} </span>
     )
@@ -26,10 +29,10 @@ function Word({keyWord, active}) {
 function TypingField() {
     
     const paragraph = "and we need you for a little late night dinner and then i have a few days off work tomorrow night so we will have a plan on tuesday for you and i can just drop your off and bring it home to the house if i can come over to your mom house and i get some water for me and then i’ll take you out for me and then i’ll take"
-    const paraList = paragraph.split(" ")
-    const [activeWord, setActiveWord] = useState(0)
-    const [curLetter, setCurLetter]= useState(-1)
-    const [yesLetter, setYesLetter]= useState('')
+    const paraList = paragraph.split("")
+
+    const [curLetter, setCurLetter] = useState('')
+    const activeWord = useRef(0)
 
     const [text, setText] = useState('')
 
@@ -42,32 +45,26 @@ function TypingField() {
     function focus() {
         inputRef.current.focus()
     }
-
-    useEffect(() => {
-        if (text[text.length - 1] === " "){    
-            setActiveWord(activeWord + 1)
-            setCurLetter(0)
-        } else{
-            setCurLetter(curLetter + 1)
-            setYesLetter(text[text.length - 1])
-        }
-    }, [text])
-
-    // useEffect(() => {
-    //     console.log(yesLetter)
-    // }, [yesLetter])
     
+    useEffect(() => {
+        console.log(curLetter)
+        curLetter === " " && (activeWord.current++)
+        setCurLetter(text[text.length - 1])
+    }, [text])
     
     let yes = null
+    let wordCount = 0
     return (
         <>
             <div className="flex justify-center items-center w-full h-full">
-                <div className='max-w-3xl text-left text-2xl tracking-wide font-normal text-neutral-500 [word-spacing:5px]'>
-                    {paraList.map((word, index) => {
-                        index === activeWord ? yes = true : yes = false
+                <h1>{activeWord.current}</h1>
+                <div className='max-w-3xl text-left text-2xl tracking-wide font-normal text-neutral-500 [word-spacing:5px] max-h-40 overflow-hidden'>
+                    {paraList.map((letter) => {
+                        letter === " " && (wordCount++)
+                        wordCount === activeWord.current ? (letter === curLetter ? yes = 1 : yes = 0) : yes = 2
                         return(
-                            <Word keyWord={word} key={index} active={yes}/>
-                        )
+                            <Letter keyLetter={letter} correct={yes}/>
+                        ) 
                     })}
                 </div>
                 <button onClick={focus} className='absolute border max-w-3xl w-full h-56'></button>
