@@ -1,15 +1,26 @@
-import './App.css';
+import TypingField from "./components/TypingField.jsx"
+
+import settingsIcon from "./images/settings.svg"
+import accountIcon from "./images/user.svg"
 
 function App() {
   return (
     <div className="App">
-      <div className='h-screen w-screen bg-neutral-800 text-white text-5xl p-'>
-        <div className='flex w-full'>
-            <h1 className='font-black'>
+      <div className='h-screen w-screen bg-neutral-800 text-white text-5xl p-10 box-border overflow-hidden'>
+        <div className='flex w-full justify-between'>
+            <h1 className='font-black [font-family:"lato"]'>
               Pooga<span className='text-indigo-400'>Type</span>
             </h1>
-            <img src="./images/settings.svg" alt="" />
+            <div className='flex gap-6'>
+              <button>
+                <img src={settingsIcon} alt="settings" />
+              </button>
+              <button>
+                <img src={accountIcon} alt="account" />
+              </button>
+            </div>
         </div>
+        <TypingField/>      
       </div>
     </div>
   );
