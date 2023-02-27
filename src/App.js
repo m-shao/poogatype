@@ -9,17 +9,17 @@ function App() {
     <div className="App">
       <div className='h-screen w-screen bg-neutral-800 text-white text-5xl p-10 box-border overflow-hidden'>
         <div className='flex w-full justify-between'>
-            <h1 className='font-black [font-family:"lato"]'>
-              Pooga<span className='text-indigo-400'>Type</span>
-            </h1>
-            <div className='flex gap-6'>
-              <button>
-                <img src={settingsIcon} alt="settings" />
-              </button>
-              <button>
-                <img src={accountIcon} alt="account" />
-              </button>
-            </div>
+          <h1 className='font-black [font-family:"lato"]'>
+            Pooga<span className='text-indigo-400'>Type</span>
+          </h1>
+          <div className='flex gap-6'>
+            <button>
+              <img src={settingsIcon} alt="settings" />
+            </button>
+            <button>
+              <img src={accountIcon} alt="account" />
+            </button>
+          </div>
         </div>
 
         <TypingApp/>      
