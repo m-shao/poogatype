@@ -1,4 +1,4 @@
-export default words = [
+export const words = [
     "the",
     "of",
     "to",

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import words from '../data/words'
+
 import Stats from './Stats';
 import Timer from './Timer';
 
@@ -36,7 +38,7 @@ function TypingApp() {
     }
 
     setCurrentChar(newCurrentChar);
-    if (currentChar === text.length){
+    if (currentChar === text.length - 1){
       setTimerStop(true)
       setDoneType(true)
     }

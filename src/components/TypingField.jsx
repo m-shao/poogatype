@@ -20,7 +20,7 @@ function Word({keyWord, active, paragraph, text}) {
             return(
                 !active? <Letter keyLetter={letter} key={index} correct={2}/> :
                 (index > i ? <Letter keyLetter={letter} key={index} correct={2}/> :
-                (paragraph[i] == text[i]? 
+                (paragraph[i] === text[i]? 
                 <Letter keyLetter={letter} key={index} correct={1}/> : 
                 <Letter keyLetter={letter} key={index} correct={0}/>))
             )
