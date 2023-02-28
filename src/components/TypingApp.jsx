@@ -15,7 +15,7 @@ function TypingApp() {
   const [text, setText] = useState("")
   
   useEffect(() => {
-    setText(generateRandomString(words, 10))
+    setText(generateRandomString(words, 20))
   }, [])
   const textLength = text.split(" ").length - 1
   let wordCount = useRef(0)
@@ -25,6 +25,15 @@ function TypingApp() {
     let temp = inputValue.split(" ").length - 1
     wordCount.current = temp
   }, [inputValue])
+
+  const resetType = () => {
+    setCurrentChar(0)
+    setInputValue('')
+    setDoneType(false)
+    setTimerStop(true)
+    setTimeSeconds(0)
+    setText(generateRandomString(words, 20))
+  }
 
   const getTime = (data) => {
     setTimeSeconds(data)
@@ -97,7 +106,9 @@ function TypingApp() {
           } 
         </div>
         <button onClick={focus} className='absolute max-w-4xl w-full h-56'></button>
+        <button onClick={resetType} className="absolute">Reset</button>
       </div>
+      
       <input type="text" ref={inputRef} onChange={handleInputChange} value={inputValue} className="absolute w-0 right-0 botton-0" />
     </>
 
