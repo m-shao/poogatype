@@ -1,4 +1,3 @@
-import TypingField from "./components/TypingField.jsx"
 import TypingApp from "./components/TypingApp.jsx";
 
 import settingsIcon from "./images/settings.svg"
