@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-function Timer({stop, callback}) {
+function Timer({stop, callback, reset}) {
   const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    if (reset){
+      console.log("yourmom")
+      setSeconds(0)
+    }
+  }, [reset])
 
   useEffect(() => {
     let intervalId;
@@ -13,7 +19,9 @@ function Timer({stop, callback}) {
     return () => clearInterval(intervalId);
   }, [stop]);
 
-  callback(seconds)
+  useEffect(() => {
+    callback(seconds)
+  }, [seconds])
   
   return (
   <div className='absolute right-0'>

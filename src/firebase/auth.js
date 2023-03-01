@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { auth, googleProvider } from '../../config/firebase.js'
+import { auth, googleProvider } from '../config/firebase.js'
 import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { async } from '@firebase/util'
 

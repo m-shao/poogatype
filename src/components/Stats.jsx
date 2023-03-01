@@ -1,13 +1,17 @@
 import React from 'react'
+import Keyboard from './Keyboard'
 
-function Stats({mistakes, wordCount, letterCount, time}) {
-    const accuracy = parseInt(Math.abs(letterCount-mistakes)/letterCount * 100)
+function Stats({mistakes, wordCount, letterCount, time, mistakeObj}) {
+    const accuracy = parseInt((1 - (mistakes/letterCount))* 100) 
     const wpm = parseInt(wordCount / (time / 60))
     return (
-        <div>
-            <h1>WPM: {parseInt(wpm * accuracy/100)}</h1>
-            <h1>Accuracy: {accuracy}%</h1>
-            <h1>Raw WPM: {wpm}</h1>
+        <div className='flex gap-20'>
+            <div className='flex flex-col gap-8'>
+                <h1>WPM: {parseInt(wpm * accuracy/100)}</h1>
+                <h1>Accuracy: {accuracy}%</h1>
+                <h1>Raw WPM: {wpm}</h1>
+            </div>    
+            <Keyboard mistakeObj={mistakeObj}/>
         </div>
     )
 }

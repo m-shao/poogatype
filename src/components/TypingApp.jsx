@@ -3,23 +3,29 @@ import React, { useState, useEffect, useRef } from 'react';
 import {words} from '../data/words.js'
 import {generateRandomString} from '../utils/randomString.js'
 
+import restart from '../images/restart.svg'
+
 import Stats from './Stats';
 import Timer from './Timer';
 
-function TypingApp() {
+function TypingApp({textLength}) {
   const [currentChar, setCurrentChar] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [doneType, setDoneType] = useState(false)
   const [timerStop, setTimerStop] = useState(true)
   const [timeSeconds, setTimeSeconds] = useState(0)
   const [text, setText] = useState("")
+  const [timerReset, setTimerReset] = useState(false)
+
+  textLength = parseInt(textLength)
   
   useEffect(() => {
-    setText(generateRandomString(words, 20))
+    setText(generateRandomString(words, textLength))
   }, [])
-  const textLength = text.split(" ").length - 1
+
   let wordCount = useRef(0)
   let mistakes = useRef([])
+  let mistakeObj = useRef({})
 
   useEffect(() => {
     let temp = inputValue.split(" ").length - 1
@@ -32,7 +38,11 @@ function TypingApp() {
     setDoneType(false)
     setTimerStop(true)
     setTimeSeconds(0)
-    setText(generateRandomString(words, 20))
+    setTimerReset(true)
+    wordCount.current = 0
+    mistakes.current = []
+    mistakeObj.current = {}
+    setText(generateRandomString(words, textLength))
   }
 
   const getTime = (data) => {
@@ -59,6 +69,7 @@ function TypingApp() {
 
   const getCharClass = (index) => {
     if(currentChar === 1 && timerStop){
+      setTimerReset(false)
       setTimerStop(false)
     }
     if (index < currentChar) {
@@ -70,6 +81,10 @@ function TypingApp() {
           let tempList = [...mistakes.current]
           tempList.push(index)
           mistakes.current = tempList
+
+          let wrongLetter = text[index]
+          mistakeObj.current[wrongLetter] = (mistakeObj.current[wrongLetter]+1) || 1
+
         }
         return 'text-red-500';
       }
@@ -88,25 +103,35 @@ function TypingApp() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-full h-full relative ">  
-        <div className='max-w-4xl w-full relative -top-6 -left-1 text-xl'>
-          <h2 className='text-indigo-500 absolute'>{wordCount.current}/{textLength}</h2>
-          <Timer stop={timerStop} callback={getTime}/>
-        </div>
-        <div className='max-w-4xl text-left text-3xl font-regular text-neutral-500 [word-spacing:7px] max-h-56 overflow-hidden leading-normal relative'>
-          {!doneType ? 
-            (text.split('').map((char, index) => (
-              <span key={index} className={getCharClass(index) + " "}>
-                {char}
-              </span>
-            ))) : 
-            (
-            <Stats mistakes={mistakes.current.length} wordCount={textLength} letterCount={text.length} time={timeSeconds}/>
-            )
-          } 
-        </div>
-        <button onClick={focus} className='absolute max-w-4xl w-full h-56'></button>
-        <button onClick={resetType} className="absolute">Reset</button>
+      <div className="flex flex-col justify-center items-center w-full h-full relative text-4xl">  
+        {!doneType ? 
+          <div>
+            <div className='max-w-4xl w-full relative -top-6 -left-1 text-xl'>
+              <h2 className='text-indigo-500 absolute'>{wordCount.current}/{textLength}</h2>
+              <Timer stop={timerStop} callback={getTime} reset={timerReset}/>
+            </div>
+            <button onClick={focus}>
+              <div className='max-w-4xl text-left text-3xl font-regular text-neutral-500 [word-spacing:7px] max-h-72 overflow-hidden leading-normal relative'>
+                {text.split('').map((char, index) => (
+                  <span key={index} className={getCharClass(index) + " "}>
+                    {char}
+                  </span>
+                )) } 
+              </div>
+            </button>
+          </div> :
+          (
+            <Stats 
+            mistakes={mistakes.current.length} 
+            wordCount={textLength} 
+            letterCount={text.length} 
+            time={timeSeconds} 
+            mistakeObj={mistakeObj.current}/>
+          )
+        }
+        <button onClick={resetType} className='mt-8'>
+          <img className='invert' src={restart} alt="restart" />
+        </button>
       </div>
       
       <input type="text" ref={inputRef} onChange={handleInputChange} value={inputValue} className="absolute w-0 right-0 botton-0" />
