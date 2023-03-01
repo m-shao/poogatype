@@ -26,7 +26,7 @@ function App() {
           <Auth/>    
           <FirebaseSample/>
         </div> */}
-        <TypingApp textLength={10}/>
+        <TypingApp textLength={25}/>
       </div>
     </div>
   );
