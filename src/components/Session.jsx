@@ -7,7 +7,7 @@ import settings from '../images/settings.svg'
 function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, setTextLength}) {
 
     const [wordMode, setWordMode] = useState(10)
-    const [menuOpen, setMenuOpen] = useState(true)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const modes = [
         {value: 10, id: "10"},
