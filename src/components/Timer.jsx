@@ -24,7 +24,7 @@ function Timer({stop, callback, reset}) {
   }, [seconds])
   
   return (
-  <div className='absolute right-0'>
+  <div className=''>
     {seconds}
   </div>
   )

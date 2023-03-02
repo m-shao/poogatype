@@ -6,9 +6,9 @@ import {generateRandomString} from '../utils/randomString.js'
 import restart from '../images/restart.svg'
 
 import Stats from './Stats';
-import Timer from './Timer';
+import Session from './Session.jsx';
 
-function TypingApp({textLength}) {
+function TypingApp() {
   const [currentChar, setCurrentChar] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [doneType, setDoneType] = useState(false)
@@ -16,8 +16,11 @@ function TypingApp({textLength}) {
   const [timeSeconds, setTimeSeconds] = useState(0)
   const [text, setText] = useState("")
   const [timerReset, setTimerReset] = useState(false)
+  const [textLength, setTextLength] = useState(10)
 
-  textLength = parseInt(textLength)
+  useEffect(() => {
+    resetType()
+  },[textLength])
   
   useEffect(() => {
     setText(generateRandomString(words, textLength))
@@ -42,6 +45,7 @@ function TypingApp({textLength}) {
     wordCount.current = 0
     mistakes.current = []
     mistakeObj.current = {}
+    console.log(textLength)
     setText(generateRandomString(words, textLength))
   }
 
@@ -106,10 +110,14 @@ function TypingApp({textLength}) {
       <div className="flex flex-col justify-center items-center w-full h-full relative text-4xl">  
         {!doneType ? 
           <div>
-            <div className='max-w-4xl w-full relative -top-6 -left-1 text-xl'>
-              <h2 className='text-indigo-500 absolute'>{wordCount.current}/{textLength}</h2>
-              <Timer stop={timerStop} callback={getTime} reset={timerReset}/>
-            </div>
+            <Session wordCount={wordCount.current} 
+              textLength={textLength} 
+              timerStop={timerStop} 
+              getTime={getTime} 
+              timerReset={timerReset}
+              setTextLength={setTextLength}
+              reset={resetType}/>
+
             <button onClick={focus}>
               <div className='max-w-4xl text-left text-3xl font-regular text-neutral-500 [word-spacing:7px] max-h-72 overflow-hidden leading-normal relative'>
                 {text.split('').map((char, index) => (
