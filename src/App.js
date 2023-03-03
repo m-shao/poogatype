@@ -1,6 +1,6 @@
 import TypingApp from "./components/TypingApp.jsx";
 import FirebaseSample from "./components/FirebaseSample.jsx";
-import { Auth } from "./firebase/auth.js";
+import { LoginPage } from "./components/firebase/LoginPage.jsx";
 
 import settingsIcon from "./images/settings.svg"
 import accountIcon from "./images/user.svg"
@@ -22,11 +22,11 @@ function App() {
             </button>
           </div>
         </div>
-        {/* <div className="w-full h-full flex justify-between items-center">
-          <Auth/>    
-          <FirebaseSample/>
-        </div> */}
-        <TypingApp/>
+        <div className="w-full h-full flex justify-between items-center">
+          <LoginPage/>    
+          {/* <FirebaseSample/> */}
+        </div>
+        {/* <TypingApp/> */}
       </div>
     </div>
   );
