@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { auth, googleProvider } from '../config/firebase.js'
 import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup, sendEmailVerification } from 'firebase/auth'
+import { Link } from 'react-router-dom'
+
 
 import Notification from '../components/Notification.jsx'
 
@@ -75,7 +77,9 @@ const LoginPage = ( ) => {
     return(
       <div className='w-screen h-screen flex items-center justify-center fixed left-0 top-0 bg-black bg-opacity-60 p-4'>
         <div className='bg-neutral-800 text-white max-h-128 h-full max-w-4xl w-full flex gap-16 justify-between p-12 rounded-xl relative'>
-          <button className='absolute right-8 top-8'><img className='invert' src={exitIcon} alt="" /></button>
+          <Link to="/" className='absolute right-8 top-8'>
+            <img className='invert' src={exitIcon} alt="" />
+          </Link>
           <div className='text-lg flex flex-col gap-7 flex-1'>
             <h1 className='text-4xl'>Register</h1>
             <div className='flex flex-col gap-2'>
@@ -127,10 +131,9 @@ const LoginPage = ( ) => {
                 onChange={(e) => {
                     setPassword(e.target.value)
               }}/>
-              <button className='text-left'
-              onClick={() => {}}>
+              <Link to="/reset-password" className='text-left'>
                 <h4 className='text-sm text-neutral-400'>Forgot Password?</h4>
-              </button>
+              </Link>
             </div>
             
 

@@ -8,9 +8,10 @@ import {
 
 import NavBar from "./components/NavBar.jsx";
 import TypingApp from "./pages/TypingApp.jsx";
-import FirebaseSample from "./components/FirebaseSample.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
+import Settings from "./pages/Settings.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
           <Route index element={<TypingApp/>}/>
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/reset-password" element={<ForgotPassword/>}/>
+          <Route path="/settings" element={<Settings/>}/>
+          <Route path="/profile" element={<Profile/>}/>
       </Route>
     )
   )
@@ -39,7 +42,6 @@ const Root = () => {
   return(
     <>
       <NavBar/>
-
       <div className="w-full h-full flex justify-between items-center">
         <Outlet />
       </div>

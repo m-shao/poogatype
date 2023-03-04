@@ -4,7 +4,6 @@ function Timer({stop, callback, reset}) {
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
     if (reset){
-      console.log("yourmom")
       setSeconds(0)
     }
   }, [reset])

@@ -45,7 +45,6 @@ function TypingApp() {
     wordCount.current = 0
     mistakes.current = []
     mistakeObj.current = {}
-    console.log(textLength)
     setText(generateRandomString(words, textLength))
   }
 
@@ -131,7 +130,6 @@ function TypingApp() {
           (
             <Stats 
             mistakes={mistakes.current.length} 
-            wordCount={textLength} 
             letterCount={text.length} 
             time={timeSeconds} 
             mistakeObj={mistakeObj.current}/>

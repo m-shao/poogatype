@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import settingsIcon from "../images/settings.svg"
 import accountIcon from "../images/user.svg"
@@ -6,17 +7,20 @@ import accountIcon from "../images/user.svg"
 
 function NavBar() {
   return (
-    <div className='flex w-full justify-between'>
-        <h1 className='font-black [font-family:"lato"]'>
-        Pooga<span className='text-indigo-400'>Type</span>
-        </h1>
+    <div className='flex w-full justify-between items-center'>
+        <Link>
+          <h1 className='font-black [font-family:"lato"]'>
+            Pooga<span className='text-indigo-400'>Type</span>
+          </h1>
+        </Link>
+        
         <div className='flex gap-6'>
-        <button>
-            <img src={settingsIcon} alt="settings" />
-        </button>
-        <button>
-            <img src={accountIcon} alt="account" />
-        </button>
+        <Link to="/">
+          <img src={settingsIcon} alt="settings" />
+        </Link>
+        <Link to="/login">
+          <img src={accountIcon} alt="account" />
+        </Link>
         </div>
     </div>
   )

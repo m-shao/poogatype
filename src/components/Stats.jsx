@@ -1,9 +1,9 @@
 import React from 'react'
 import Keyboard from './Keyboard'
 
-function Stats({mistakes, wordCount, letterCount, time, mistakeObj}) {
+function Stats({mistakes, letterCount, time, mistakeObj}) {
     const accuracy = parseInt((1 - (mistakes/letterCount))* 100) 
-    const wpm = parseInt(wordCount / (time / 60))
+    const wpm = parseInt((letterCount / 5)/(time/60))
     return (
         <div className='flex gap-20'>
             <div className='flex flex-col gap-8'>

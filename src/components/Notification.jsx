@@ -18,7 +18,7 @@ function Notification({ type, message }) {
     }, [type])
     
     return (
-        <div className={"absolute bottom-5 mx-auto w-full max-w-2xl h-10 rounded-xl text-xl flex justify-center items-center transition-all duration-1000 " 
+        <div className={"absolute bottom-5 mx-auto w-full max-w-2xl h-10 rounded-xl text-xl flex justify-center items-center transition-opacity duration-1000 " 
         + notificationColour + " "
         + (!notificationVisible && " opacity-0")}>
             {message}
