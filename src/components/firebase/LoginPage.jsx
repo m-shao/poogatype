@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { auth, googleProvider } from '../../config/firebase.js'
-import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, sendEmailVerification } from 'firebase/auth'
-import { async } from '@firebase/util'
+import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup, sendEmailVerification } from 'firebase/auth'
 
 import Notification from '../Notification.jsx'
 
@@ -32,7 +31,7 @@ export const LoginPage = ( ) => {
 
     const createAccount = async () => {
         try{
-            const userCreds =  await createUserWithEmailAndPassword(auth, newEmail, newPassword)
+            await createUserWithEmailAndPassword(auth, newEmail, newPassword)
             signUserOut()
             await sendEmailVerification(auth?.currentUser)
             callNotification("good", "New Account Created, Please Verify Email")
@@ -65,14 +64,6 @@ export const LoginPage = ( ) => {
         }
     }
 
-    const resetPasswordEmail = async () => {
-      try{
-        sendPasswordResetEmail(auth, email)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
     const signInWithGoogle = async () => {
         try{
             await signInWithPopup(auth, googleProvider)
@@ -82,7 +73,7 @@ export const LoginPage = ( ) => {
     }
 
     return(
-      <div className='w-screen h-screen flex items-center justify-center fixed left-0 top-0 bg-black bg-opacity-60'>
+      <div className='w-screen h-screen flex items-center justify-center fixed left-0 top-0 bg-black bg-opacity-60 p-4'>
         <div className='bg-neutral-800 text-white max-h-128 h-full max-w-4xl w-full flex gap-16 justify-between p-12 rounded-xl relative'>
           <button className='absolute right-8 top-8'><img className='invert' src={exitIcon} alt="" /></button>
           <div className='text-lg flex flex-col gap-7 flex-1'>
@@ -137,7 +128,7 @@ export const LoginPage = ( ) => {
                     setPassword(e.target.value)
               }}/>
               <button className='text-left'
-              onClick={resetPasswordEmail}>
+              onClick={() => {}}>
                 <h4 className='text-sm text-neutral-400'>Forgot Password?</h4>
               </button>
             </div>

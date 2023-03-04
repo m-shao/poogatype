@@ -1,6 +1,7 @@
 import TypingApp from "./components/TypingApp.jsx";
 import FirebaseSample from "./components/FirebaseSample.jsx";
 import LoginPage from "./components/firebase/LoginPage.jsx";
+import ForgotPassword from "./components//firebase/ForgotPassword.jsx";
 
 import settingsIcon from "./images/settings.svg"
 import accountIcon from "./images/user.svg"
@@ -23,8 +24,8 @@ function App() {
           </div>
         </div>
         <div className="w-full h-full flex justify-between items-center">
-          {/* <ForgotPassword/> */}
-          <LoginPage/>    
+          <ForgotPassword/>
+          {/* <LoginPage/>     */}
           {/* <FirebaseSample/> */}
         </div>
         {/* <TypingApp/> */}
