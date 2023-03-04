@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { auth, googleProvider } from '../../config/firebase.js'
+import { auth, googleProvider } from '../config/firebase.js'
 import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup, sendEmailVerification } from 'firebase/auth'
 
-import Notification from '../Notification.jsx'
+import Notification from '../components/Notification.jsx'
 
-import signInIcon from '../../images/signin-icon.svg'
-import newUserIcon from '../../images/user-add-icon.svg'
-import googleSignInIcon from '../../images/google-icon.svg'
-import exitIcon from '../../images/x.svg'
+import signInIcon from '../images/signin-icon.svg'
+import newUserIcon from '../images/user-add-icon.svg'
+import googleSignInIcon from '../images/google-icon.svg'
+import exitIcon from '../images/x.svg'
 
-export const LoginPage = ( ) => {
+const LoginPage = ( ) => {
     const [newEmail, setNewEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
@@ -149,3 +149,5 @@ export const LoginPage = ( ) => {
       </div>
     )
 }
+
+export default LoginPage

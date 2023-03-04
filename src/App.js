@@ -1,37 +1,48 @@
-import TypingApp from "./components/TypingApp.jsx";
-import FirebaseSample from "./components/FirebaseSample.jsx";
-import LoginPage from "./components/firebase/LoginPage.jsx";
-import ForgotPassword from "./components//firebase/ForgotPassword.jsx";
+import { 
+  createBrowserRouter, 
+  createRoutesFromElements, 
+  Route,
+  Outlet, 
+  RouterProvider
+} from "react-router-dom";
 
-import settingsIcon from "./images/settings.svg"
-import accountIcon from "./images/user.svg"
+import NavBar from "./components/NavBar.jsx";
+import TypingApp from "./pages/TypingApp.jsx";
+import FirebaseSample from "./components/FirebaseSample.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 
 function App() {
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root/>}>
+          <Route index element={<TypingApp/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/reset-password" element={<ForgotPassword/>}/>
+      </Route>
+    )
+  )
+
   return (
     <div className="App">
       <div className='h-screen w-screen bg-neutral-800 text-white text-5xl p-10 box-border overflow-hidden'>
-        <div className='flex w-full justify-between'>
-          <h1 className='font-black [font-family:"lato"]'>
-            Pooga<span className='text-indigo-400'>Type</span>
-          </h1>
-          <div className='flex gap-6'>
-            <button>
-              <img src={settingsIcon} alt="settings" />
-            </button>
-            <button>
-              <img src={accountIcon} alt="account" />
-            </button>
-          </div>
-        </div>
-        <div className="w-full h-full flex justify-between items-center">
-          <ForgotPassword/>
-          {/* <LoginPage/>     */}
-          {/* <FirebaseSample/> */}
-        </div>
-        {/* <TypingApp/> */}
+        <RouterProvider router={router}/>
       </div>
     </div>
-  );
+  )
 }
 
 export default App;
+
+const Root = () => {
+  return(
+    <>
+      <NavBar/>
+
+      <div className="w-full h-full flex justify-between items-center">
+        <Outlet />
+      </div>
+    </>
+  )
+}

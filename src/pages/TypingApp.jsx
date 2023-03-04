@@ -5,8 +5,8 @@ import {generateRandomString} from '../utils/randomString.js'
 
 import restart from '../images/restart.svg'
 
-import Stats from './Stats';
-import Session from './Session.jsx';
+import Stats from '../components/Stats';
+import Session from '../components/Session.jsx';
 
 function TypingApp() {
   const [currentChar, setCurrentChar] = useState(0);

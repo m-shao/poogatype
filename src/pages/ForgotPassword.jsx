@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { auth } from '../../config/firebase.js'
+import { auth } from '../config/firebase.js'
 import { sendPasswordResetEmail } from 'firebase/auth'
 
-import Notification from '../Notification.jsx'
+import Notification from '../components/Notification.jsx'
 
-import xIcon from '../../images/x.svg'
+import xIcon from '../images/x.svg'
 
 function ForgotPassword() {
     const [resetEmail, setResetEmail] = useState('')
