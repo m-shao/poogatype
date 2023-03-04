@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { auth } from '../config/firebase.js'
 
 import settingsIcon from "../images/settings.svg"
 import accountIcon from "../images/user.svg"
@@ -8,7 +9,7 @@ import accountIcon from "../images/user.svg"
 function NavBar() {
   return (
     <div className='flex w-full justify-between items-center'>
-        <Link>
+        <Link to="/">
           <h1 className='font-black [font-family:"lato"]'>
             Pooga<span className='text-indigo-400'>Type</span>
           </h1>
@@ -18,7 +19,7 @@ function NavBar() {
         <Link to="/">
           <img src={settingsIcon} alt="settings" />
         </Link>
-        <Link to="/login">
+        <Link to={auth?.currentUser ? "/profile" : "/login"}>
           <img src={accountIcon} alt="account" />
         </Link>
         </div>
