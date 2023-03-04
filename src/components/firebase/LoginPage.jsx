@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { auth, googleProvider } from '../../config/firebase.js'
-import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, sendEmailVerification } from 'firebase/auth'
 import { async } from '@firebase/util'
+
+import Notification from '../Notification.jsx'
 
 import signInIcon from '../../images/signin-icon.svg'
 import newUserIcon from '../../images/user-add-icon.svg'
@@ -15,28 +17,60 @@ export const LoginPage = ( ) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const createAccount = async () => {
-        try{
-            await createUserWithEmailAndPassword(auth, newEmail, newPassword)
-        } catch(error){
-            console.error(error)
-        }
+    const [activeNotification, setActiveNotification] = useState(false)
+    const [notiMessage, setnotiMessage] = useState('')
+    const [notiType, setNotiType] = useState('good')
+
+    const callNotification = (type, message) => {
+      setnotiMessage(message)
+      setNotiType(type)
+      setActiveNotification(true)
+      setTimeout(() => {
+        setActiveNotification(false)
+    }, 4000)
     }
 
+    const createAccount = async () => {
+        try{
+            const userCreds =  await createUserWithEmailAndPassword(auth, newEmail, newPassword)
+            signUserOut()
+            await sendEmailVerification(auth?.currentUser)
+            callNotification("good", "New Account Created, Please Verify Email")
+        } catch(error){
+            callNotification("bad", "This Account Already Exists")
+        }
+    }
+    
     const signIn = async () => {
         try{
             await signInWithEmailAndPassword(auth, email, password)
+            
+            if (auth.currentUser.emailVerified) {
+              callNotification("good", "Signed In Successfully")
+            }
+            else{
+              signUserOut()
+              callNotification("bad", "Please Verify This Account or Create a New One")
+            }
         } catch(error) {
             console.error(error)
         }
     }
     
-    const signOut = async () => {
+    const signUserOut = async () => {
         try{
             await signOut(auth)
         } catch(error) {
             console.error(error)
         }
+    }
+
+    const resetPasswordEmail = async () => {
+      try{
+        sendPasswordResetEmail(auth, email)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
     const signInWithGoogle = async () => {
@@ -75,12 +109,16 @@ export const LoginPage = ( ) => {
             <button className='p-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-all flex gap-3 items-center justify-center' onClick={createAccount}>
               <img src={newUserIcon} alt="create account" />
               <h2>Create Account</h2>
-            </button>           
+            </button>       
+            <button className='p-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
+              <img src={newUserIcon} alt="create account" />
+              <h2>Sign Out</h2>
+            </button>         
           </div>
 
           <div className=" left-1/2 w-0.5 h-full top-0 bg-neutral-900"></div>
 
-          <div className='text-lg flex flex-col gap-7 flex-1'>
+          <div className='text-lg flex flex-col gap-7 flex-1 justify-start'>
             <h1 className='text-4xl'>Sign In</h1>
             <div className='flex flex-col gap-2'>
               <h2>Email</h2>
@@ -98,7 +136,10 @@ export const LoginPage = ( ) => {
                 onChange={(e) => {
                     setPassword(e.target.value)
               }}/>
-              <h4 className='text-sm text-neutral-400'>Forgot Password?</h4>
+              <button className='text-left'
+              onClick={resetPasswordEmail}>
+                <h4 className='text-sm text-neutral-400'>Forgot Password?</h4>
+              </button>
             </div>
             
 
@@ -113,6 +154,7 @@ export const LoginPage = ( ) => {
             </button>
           </div>
         </div>
+        {activeNotification && <Notification type={notiType} message={notiMessage}/>}
       </div>
     )
 }
