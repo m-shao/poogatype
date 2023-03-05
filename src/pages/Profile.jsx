@@ -1,8 +1,11 @@
 import React from 'react'
+import { useTheme, useThemeUpdate } from '../context/ColourContext.js'
 
 import GreyedCard from '../components/GreyedCard'
 
 function Profile() {
+  const {textColour1, textColour2, highlight1, highlight2, main1, main2} = useTheme()
+  
   return (
     <GreyedCard flexDir={"col"} gap={"16"} justify={"between"} align={"start"}>
     <div>

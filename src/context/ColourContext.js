@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import themes from '../data/themes.js'
+import { themes } from '../data/themes.js'
 
 const themeContext = React.createContext()
 const themeUpdateContext = React.createContext()
@@ -14,7 +14,8 @@ export function useThemeUpdate() {
 
 
 export function ThemeProvider({ children }) {   
-    const [theme, setTheme] = useState([])
+    const [theme, setTheme] = useState(themes['default'])
+
     function changeTheme(data) {     
         setTheme((theme) => themes[data])   
     }    
