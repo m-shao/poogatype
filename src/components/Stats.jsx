@@ -11,7 +11,7 @@ function Stats({mistakes, letterCount, time, mistakeObj}) {
                 <h1>Accuracy: {accuracy}%</h1>
                 <h1>Raw WPM: {wpm}</h1>
             </div>    
-            <Keyboard mistakeObj={mistakeObj}/>
+            <Keyboard mistakeObj={mistakeObj} largeness={12}/>
         </div>
     )
 }

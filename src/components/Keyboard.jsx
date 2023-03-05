@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Keyboard({mistakeObj}) {
+function Keyboard({mistakeObj, largeness}) {
     const keys = ["qwertyuiop".split(""), 
-                "asdfghjkl ".split(""), 
-                "zxcvbnm   ".split("")]
+                "asdfghjkl".split(""), 
+                "zxcvbnm".split("")]
 
     return (
         <>
@@ -12,8 +12,8 @@ function Keyboard({mistakeObj}) {
                     <div className='flex'>
                         {keyRow.map((key) => (
                             <div title={"Wrong: " + (mistakeObj[key] || 0)} className={
-                                'w-12 h-12 m-1 bg-neutral-600 text-white rounded-lg flex items-center justify-center '
-                                + (key in mistakeObj && 'bg-red-500 ') + (key === ' ' && ' bg-neutral-800')}>
+                                'h-' + largeness + ' w-' + largeness + ' m-1 bg-neutral-600 text-white rounded-lg flex items-center justify-center '
+                                + (key in mistakeObj && 'bg-red-500 ')}>
                                 <h1 className="inline cursor-default">{key}</h1>
                             </div>
                         ))}

@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import { auth } from '../config/firebase.js'
 
 import settingsIcon from "../images/settings.svg"
 import accountIcon from "../images/user.svg"
 
 
 function NavBar() {
+  
   return (
     <div className='flex w-full justify-between items-center'>
         <Link to="/">
@@ -19,7 +19,7 @@ function NavBar() {
         <Link to="/">
           <img src={settingsIcon} alt="settings" />
         </Link>
-        <Link to={auth?.currentUser ? "/profile" : "/login"}>
+        <Link to={"/login"}>
           <img src={accountIcon} alt="account" />
         </Link>
         </div>
