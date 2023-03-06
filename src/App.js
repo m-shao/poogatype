@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { 
   createBrowserRouter, 
   createRoutesFromElements, 
@@ -8,12 +8,15 @@ import {
 } from "react-router-dom";
 import { ThemeProvider } from './context/ColourContext.js'
 
+import { auth } from './config/firebase.js'
+
 import NavBar from "./components/NavBar.jsx";
 import TypingApp from "./pages/TypingApp.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Settings from "./pages/Settings.jsx";
 import Profile from "./pages/Profile.jsx";
+import ProfilePage from './pages/ProfilePage.jsx';
 
 function App() {
 
@@ -21,10 +24,10 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root/>}>
         <Route index element={<TypingApp/>}/>
-        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/login" element={<ProfilePage/>}/>
         <Route path="/reset-password" element={<ForgotPassword/>}/>
         <Route path="/settings" element={<Settings/>}/>
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/profile" element={<ProfilePage/>}/>
       </Route>
     )
   )
