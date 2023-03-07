@@ -28,16 +28,16 @@ function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, 
     return (
         <div className='max-w-4xl w-full text-xl mb-1 flex justify-between'>
             <div className='flex gap-3 items-center'>
-                <h2 className='text-indigo-500'>{wordCount}/{textLength}</h2>
-                <div className='flex gap-5 bg-neutral-900 px-3 py-1 rounded-3xl'>
+                <h2 className='text-[color:var(--highlight-primary)]'>{wordCount}/{textLength}</h2>
+                <div className='flex gap-5 bg-[color:var(--base-secondary)] px-3 py-1 rounded-3xl'>
                     <button className='py-1' onClick={toggleMenu}>
                         <img src={settings} alt="" />
                     </button>
                     <div className={'gap-5 flex ' + (!menuOpen && "hidden")}>
                         {modes.map((mode) => (
                             <button key={mode.id} 
-                                className={"text-neutral-400 " + 
-                                (mode.value === wordMode && "text-white")}
+                                className={"text-[color:var(--text-secondary)] " + 
+                                (mode.value === wordMode && "text-[color:var(--text-primary)]")}
                                 onClick={() => {changeMode(mode.value)}}>
                                 {mode.value}
                             </button>

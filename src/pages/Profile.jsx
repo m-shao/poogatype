@@ -57,7 +57,7 @@ function Profile() {
     
   return (
     <GreyedCard flexDir={"col"} gap={"16"} justify={"between"} align={"start"}>
-    <Link to="/" className='absolute right-8 top-8 hover:bg-neutral-900 transition-all p-2 rounded-lg'>
+    <Link to="/" className='absolute right-8 top-8 hover:bg-[color:var(--base-secondary)] transition-all p-2 rounded-lg'>
         <img className='invert' src={exitIcon} alt="" />
     </Link>
     <div className="bg-[main1]">
@@ -83,7 +83,7 @@ function Profile() {
         <h1>Account Settings</h1>
         <h1>Joined {joinDate.slice(4, 17)}</h1>
     </div>
-    <button className='p-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
+    <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
         <h2>Sign Out</h2>
     </button>  
       

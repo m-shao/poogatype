@@ -11,7 +11,7 @@ function NavBar() {
     <div className='flex w-full justify-between items-center'>
         <Link to="/">
           <h1 className='font-black [font-family:"lato"]'>
-            Pooga<span className='text-indigo-400'>Type</span>
+            Pooga<span className='text-[color:var(--highlight-primary)]'>Type</span>
           </h1>
         </Link>
         

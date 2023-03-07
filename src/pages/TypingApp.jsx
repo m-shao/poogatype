@@ -77,7 +77,7 @@ function TypingApp() {
     }
     if (index < currentChar) {
       if (inputValue[index] === text[index]){
-        return 'text-white';
+        return 'text-[color:var(--text-primary)]';
       }
       else{
         if(!mistakes.current.includes(index)){
@@ -92,9 +92,9 @@ function TypingApp() {
         return 'text-red-500';
       }
     } else if (index === currentChar) {
-      return 'text-indigo-500';
+      return 'text-[color:var(--highlight-primary)]';
     } else if (index >= currentChar) {
-      return 'text-neutral-500';
+      return 'text-[color:var(--text-secondary)]';
     }
   }
 
@@ -118,7 +118,7 @@ function TypingApp() {
               reset={resetType}/>
 
             <button onClick={focus}>
-              <div className='max-w-4xl text-left text-3xl font-regular text-neutral-500 [word-spacing:7px] max-h-72 overflow-scroll scrollbar-hide leading-normal relative'>
+              <div className='max-w-4xl text-left text-3xl font-regular text-[color:var(--text-secondary)] [word-spacing:7px] max-h-72 overflow-scroll scrollbar-hide leading-normal relative'>
                 {text.split('').map((char, index) => (
                   <span key={index} className={getCharClass(index) + " "}>
                     {char}
