@@ -1,9 +1,16 @@
 import React from 'react'
 import Keyboard from './Keyboard'
+import updateDoc from '../utils/updateDoc.js'
+import {useEffect} from 'react'
 
 function Stats({mistakes, letterCount, time, mistakeObj}) {
     const accuracy = parseInt((1 - (mistakes/letterCount))* 100) 
     const wpm = parseInt((letterCount / 5)/(time/60))
+    
+    useEffect(() => {
+        updateDoc(wpm, accuracy)
+    }, [])
+
     return (
         <div className='flex gap-20'>
             <div className='flex flex-col gap-8'>

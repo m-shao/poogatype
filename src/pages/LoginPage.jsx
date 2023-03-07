@@ -4,8 +4,6 @@ import { createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, si
 import { Link } from 'react-router-dom'
 
 
-import Notification from '../components/Notification.jsx'
-
 import signInIcon from '../images/signin-icon.svg'
 import newUserIcon from '../images/user-add-icon.svg'
 import googleSignInIcon from '../images/google-icon.svg'
@@ -18,43 +16,26 @@ const LoginPage = ( ) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const [activeNotification, setActiveNotification] = useState(false)
-    const [notiMessage, setnotiMessage] = useState('')
-    const [notiType, setNotiType] = useState('good')
-
-    const callNotification = (type, message) => {
-      setnotiMessage(message)
-      setNotiType(type)
-      setActiveNotification(true)
-      setTimeout(() => {
-        setActiveNotification(false)
-    }, 4000)
-    }
-
     const createAccount = async () => {
         try{
             await createUserWithEmailAndPassword(auth, newEmail, newPassword)
             signUserOut()
             await sendEmailVerification(auth?.currentUser)
-            callNotification("good", "New Account Created, Please Verify Email")
+            alert("New Account Created, Please Verify Email")
         } catch(error){
-            callNotification("bad", "This Account Already Exists")
+            alert("This Account Already Exists")
         }
     }
     
     const signIn = async () => {
         try{
             await signInWithEmailAndPassword(auth, email, password)
-            
-            if (auth.currentUser.emailVerified) {
-              callNotification("good", "Signed In Successfully")
-            }
-            else{
-              signUserOut()
-              callNotification("bad", "Please Verify This Account or Create a New One")
+            if (!auth.currentUser.emailVerified) {
+                signUserOut()
+                alert("Please Verify This Account or Create a New One")
             }
         } catch(error) {
-            console.error(error)
+            alert("Account does not exists")
         }
     }
     
@@ -62,7 +43,7 @@ const LoginPage = ( ) => {
         try{
             await signOut(auth)
         } catch(error) {
-            console.error(error)
+          alert("Error Signing out")
         }
     }
 
@@ -70,7 +51,7 @@ const LoginPage = ( ) => {
         try{
             await signInWithPopup(auth, googleProvider)
         } catch(error) {
-            console.error(error)
+            alert("Error Signing In")
         }
     }
 
@@ -148,7 +129,6 @@ const LoginPage = ( ) => {
             </button>
           </div>
         </div>
-        {activeNotification && <Notification type={notiType} message={notiMessage}/>}
       </div>
     )
 }
