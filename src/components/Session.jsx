@@ -6,14 +6,14 @@ import settings from '../images/settings.svg'
 
 function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, setTextLength}) {
 
-    const [wordMode, setWordMode] = useState(10)
+    const [wordMode, setWordMode] = useState(20)
     const [menuOpen, setMenuOpen] = useState(false)
 
     const modes = [
-        {value: 10, id: "10"},
         {value: 20, id: "20"},
         {value: 25, id: "25"},
         {value: 35, id: "35"},
+        {value: 45, id: "45"},
         {value: 50, id: "50"},
     ]
 

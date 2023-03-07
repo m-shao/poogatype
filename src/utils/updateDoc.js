@@ -9,6 +9,7 @@ const updateDoc = async (wpm, acc) => {
         
         if (docSnap.exists()){
             const data = docSnap.data()
+            console.log(wpm)
             setDoc(docRef, {
                 averageWpm: ((data.averageWpm * data.gamesPlayed) + wpm)/(data.gamesPlayed + 1),
                 averageAccuracy: ((data.averageAccuracy * data.gamesPlayed) + acc)/(data.gamesPlayed + 1),

@@ -8,9 +8,7 @@ import { useTheme } from '../context/ColourContext.js'
 import { Link } from 'react-router-dom'
 import exitIcon from '../images/x.svg'
 
-// import { auth } from '../config/firebase.js'
 import {signOut} from 'firebase/auth'
-// import readDoc from '../utils/readDoc.js'
 
 import GreyedCard from '../components/GreyedCard'
 
