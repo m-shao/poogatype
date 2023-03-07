@@ -13,7 +13,7 @@ function Keyboard({mistakeObj, largeness}) {
                         {keyRow.map((key) => (
                             <div title={"Wrong: " + (mistakeObj[key] || 0)} className={
                                 'w-12 h-12 m-1 bg-[color:var(--text-secondary)] text-[color:var(--text-primary)] rounded-lg flex items-center justify-center '
-                                + (key in mistakeObj && 'bg-red-500 ')}>
+                                + (key in mistakeObj && 'bg-[color:var(--error)]')}>
                                 <h1 className="inline cursor-default">{key}</h1>
                             </div>
                         ))}

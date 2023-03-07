@@ -86,13 +86,13 @@ function TypingApp() {
           mistakes.current = tempList
 
           let wrongLetter = text[index]
-          mistakeObj.current[wrongLetter] = (mistakeObj.current[wrongLetter]+1) || 1
+          mistakeObj.current[wrongLetter] = (mistakeObj.current[wrongLetter] + 1) || 1
 
         }
-        return 'text-red-500';
+        return 'text-[color:var(--error)] + underline';
       }
     } else if (index === currentChar) {
-      return 'text-[color:var(--highlight-primary)]';
+      return 'text-[color:var(--highlight-primary)] underline';
     } else if (index >= currentChar) {
       return 'text-[color:var(--text-secondary)]';
     }
