@@ -16,7 +16,7 @@ function TypingApp() {
   const [timeSeconds, setTimeSeconds] = useState(0)
   const [text, setText] = useState("")
   const [timerReset, setTimerReset] = useState(false)
-  const [textLength, setTextLength] = useState(10)
+  const [textLength, setTextLength] = useState(20)
 
   useEffect(() => {
     resetType()

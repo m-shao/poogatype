@@ -13,11 +13,15 @@ import {signOut} from 'firebase/auth'
 import GreyedCard from '../components/GreyedCard'
 
 function Profile() {
-    const {textColour1, textColour2, highlight1, highlight2, main1, main2} = useTheme()
+    const a = useTheme()
+    let textColour1, textColour2, highlight1, highlight2, main1, main2
+    [textColour1, textColour2, highlight1, highlight2, main1, main2] = a
 
     const [wpm, setWpm] = useState(0)
     const [acc, setAcc] = useState(0)
     const [games, setGames] = useState(0)
+    const [name, setName] = useState(auth?.currentUser?.displayName)
+    const [joinDate, setJoinDate] = useState(auth?.currentUser?.metadata?.creationTime)
 
     const readDoc = async () => {
         try{
@@ -60,8 +64,8 @@ function Profile() {
     <Link to="/" className='absolute right-8 top-8 hover:bg-neutral-900 transition-all p-2 rounded-lg'>
         <img className='invert' src={exitIcon} alt="" />
     </Link>
-    <div>
-      <h1 className='mb-10'>Minglun Shao</h1>
+    <div className="bg-[main1]">
+      <h1 className='mb-10'>{name}</h1>
       <div className='flex'>
             <ul className='text-3xl flex flex-row gap-6 justify-between w-full'>
                 <li className='text-center'>
@@ -81,7 +85,7 @@ function Profile() {
     </div>
     <div className='flex justify-between text-2xl'>
         <h1>Account Settings</h1>
-        <h1>Joined May 15th 2023</h1>
+        <h1>Joined {joinDate.slice(4, 17)}</h1>
     </div>
     <button className='p-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
         <h2>Sign Out</h2>
