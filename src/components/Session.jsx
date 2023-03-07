@@ -11,10 +11,9 @@ function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, 
 
     const modes = [
         {value: 20, id: "20"},
-        {value: 25, id: "25"},
-        {value: 35, id: "35"},
-        {value: 45, id: "45"},
-        {value: 50, id: "50"},
+        {value: 30, id: "30"},
+        {value: 40, id: "40"},
+        {value: 50, id: "50"}
     ]
 
     const changeMode = (mode) => {

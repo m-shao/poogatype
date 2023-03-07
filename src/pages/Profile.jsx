@@ -4,7 +4,6 @@ import { db } from '../config/firebase.js'
 import { auth } from '../config/firebase.js'
 import { getDoc, doc, setDoc } from 'firebase/firestore'
 
-import { useTheme } from '../context/ColourContext.js'
 import { Link } from 'react-router-dom'
 import exitIcon from '../images/x.svg'
 
@@ -13,9 +12,6 @@ import {signOut} from 'firebase/auth'
 import GreyedCard from '../components/GreyedCard'
 
 function Profile() {
-    const a = useTheme()
-    let textColour1, textColour2, highlight1, highlight2, main1, main2
-    [textColour1, textColour2, highlight1, highlight2, main1, main2] = a
 
     const [wpm, setWpm] = useState(0)
     const [acc, setAcc] = useState(0)

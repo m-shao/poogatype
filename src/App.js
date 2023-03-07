@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react'
 import { 
   createBrowserRouter, 
   createRoutesFromElements, 
@@ -6,7 +5,6 @@ import {
   Outlet, 
   RouterProvider
 } from "react-router-dom";
-import { ThemeProvider } from './context/ColourContext.js'
 
 import NavBar from "./components/NavBar.jsx";
 import TypingApp from "./pages/TypingApp.jsx";
@@ -27,13 +25,12 @@ function App() {
       </Route>
     )
   )
+  //[color:var(--text-primary)]
 
   return (
     <div className="App">
-      <div className='h-screen w-screen bg-neutral-800 text-white text-5xl p-10 box-border overflow-hidden'>
-      <ThemeProvider>
+      <div className='h-screen w-screen bg-[color:var(--base-primary)] text-[color:var(--text-primary)] text-5xl p-10 box-border overflow-hidden'>
         <RouterProvider router={router}/>
-      </ThemeProvider>
       </div>
     </div>
   )

@@ -1,4 +1,19 @@
 export const themes = {
-    "default" : ["#ffffff", "#A3A3A3", "#818CF8", "#4f46e5", "#262626", "#171717"],
-    "light" : ["#000000", "#A3A3A3", "#818CF8", "#4f46e5", "#ffffff", "#cfcfcf"]
+        "default": {
+            "--text-primary": "#ffffff",
+            "--text-secondary": "#a3a3a3",
+            "--highlight-primary": "#818CF8",
+            "--highlight-secondary": "#4f46e5",
+            "--base-primary": "#262626",
+            "--base-secondary": "#171717"
+        },
+        
+        "light": {
+            "--text-primary": "#000000",
+            "--text-secondary": "#a3a3a3",
+            "--highlight-primary": "#818cf8",
+            "--highlight-secondary": "#4f46e5",
+            "--base-primary": "#ffffff",
+            "--base-secondary": "#cfcfcf"
+        }
 }
