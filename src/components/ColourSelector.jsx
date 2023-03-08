@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { themes } from '../data/themes'
 
 import exitIcon from '../images/x.svg'

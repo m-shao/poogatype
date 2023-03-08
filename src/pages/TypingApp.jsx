@@ -135,12 +135,15 @@ function TypingApp() {
             mistakeObj={mistakeObj.current}/>
           )
         }
-        <button onClick={resetType} className='mt-8'>
+        <input type="text" ref={inputRef} onChange={handleInputChange} value={inputValue} className="absolute w-0 right-0 botton-0" />
+        <button onClick={() => {
+          resetType()
+          focus()
+          }} className='mt-8'>
           <Restart colour={"var(--text-primary)"}/>
         </button>
       </div>
-      
-      <input type="text" ref={inputRef} onChange={handleInputChange} value={inputValue} className="absolute w-0 right-0 botton-0" />
+     
     </>
 
   )
