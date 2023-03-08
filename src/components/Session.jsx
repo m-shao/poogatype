@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Timer from './Timer';
 
-import settings from '../images/settings.svg'
+import SettingsSvg from "../images/SettingsSvg.jsx";
 
 function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, setTextLength}) {
 
@@ -31,7 +31,7 @@ function Session({wordCount, textLength, timerStop, getTime, timerReset, reset, 
                 <h2 className='text-[color:var(--highlight-primary)]'>{wordCount}/{textLength}</h2>
                 <div className='flex gap-5 bg-[color:var(--base-secondary)] px-3 py-1 rounded-3xl'>
                     <button className='py-1' onClick={toggleMenu}>
-                        <img src={settings} alt="" />
+                        <SettingsSvg colour="var(--highlight-primary)"/>
                     </button>
                     <div className={'gap-5 flex ' + (!menuOpen && "hidden")}>
                         {modes.map((mode) => (

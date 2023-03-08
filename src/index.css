@@ -20,7 +20,7 @@ body {
   --highlight-secondary: #4f46e5;
   --base-primary: #262626;
   --base-secondary: #171717;
-  --error: #ef4444;
+  --error-primary: #ef4444;
 }
 /* 
 :root {
@@ -30,7 +30,7 @@ body {
   --highlight-secondary: #4f46e5;
   --base-primary: #ffffff;
   --base-secondary: #cfcfcf;
-  --error: #ef4444;
+  --error-primary: #ef4444;
 } */
 /* 
 :root {
@@ -40,6 +40,7 @@ body {
   --highlight-secondary: #01161E;
   --base-primary: #AEC3B0;
   --base-secondary: #96B899;
+  --error-primary: #739b76;
 } */
 
 code {

@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
-import settingsIcon from "../images/settings.svg"
-import accountIcon from "../images/user.svg"
-
+import SettingsSvg from '../images/SettingsSvg'
+import User from '../images/User'
 
 function NavBar() {
   
@@ -17,10 +16,10 @@ function NavBar() {
         
         <div className='flex gap-6'>
         <Link to="/">
-          <img src={settingsIcon} alt="settings" />
+          <SettingsSvg colour="var(--highlight-primary)"/>
         </Link>
         <Link to={"/login"}>
-          <img src={accountIcon} alt="account" />
+          <User colour="var(--highlight-primary)"/>
         </Link>
         </div>
     </div>

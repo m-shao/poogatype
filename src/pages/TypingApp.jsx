@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {words} from '../data/words.js'
 import {generateRandomString} from '../utils/randomString.js'
 
-import restart from '../images/restart.svg'
+import Restart from '../images/Restart.jsx';
 
 import Stats from '../components/Stats';
 import Session from '../components/Session.jsx';
@@ -89,7 +89,7 @@ function TypingApp() {
           mistakeObj.current[wrongLetter] = (mistakeObj.current[wrongLetter] + 1) || 1
 
         }
-        return 'text-[color:var(--error)] + underline';
+        return 'text-[color:var(--error-primary)] + underline';
       }
     } else if (index === currentChar) {
       return 'text-[color:var(--highlight-primary)] underline';
@@ -136,7 +136,7 @@ function TypingApp() {
           )
         }
         <button onClick={resetType} className='mt-8'>
-          <img className='invert' src={restart} alt="restart" />
+          <Restart colour={"var(--text-primary)"}/>
         </button>
       </div>
       
