@@ -37,7 +37,9 @@ function ColourSelector({setColourOpen}) {
                         <div className='flex gap-2'>
                             {themeList[index].map((colour) => {
                                 return(
-                                    <div className={`w-8 h-8 bg-[${colour}] rounded-2xl`}></div>
+                                    <>
+                                        <div className={"w-8 h-8 rounded-2xl"} style={{backgroundColor:colour}}></div>
+                                    </>
                                 )
                             })}
                         </div>

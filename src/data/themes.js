@@ -16,6 +16,7 @@ export const themes = {
             "--base-primary": "#ffffff",
             "--base-secondary": "#cfcfcf"
         },
+        
         "mint": {
             "--text-primary": "#9e2a2b",
             "--text-secondary": "#e45556",
@@ -25,6 +26,7 @@ export const themes = {
             "--base-secondary": "#96b899",
             "--error-primary": "#739b76"
         },
+
         "creme": {
             "--text-primary": "#994F00",
             "--text-secondary": "#FFBA71",
