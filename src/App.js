@@ -6,7 +6,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import NavBar from "./components/NavBar.jsx";
 import TypingApp from "./pages/TypingApp.jsx";
@@ -14,11 +14,20 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Settings from "./pages/Settings.jsx";
 import ProfilePage from './pages/ProfilePage.jsx';
 import ColourSelector from "./components/ColourSelector.jsx";
+import { changeTheme } from "./utils/changeTheme.js";
 
 import Slider from "./images/Slider.jsx";
 
 function App() {
   const [colourOpen, setColourOpen] = useState("")
+
+  useEffect(() => {
+    if (!localStorage.hasOwnProperty('theme')){
+      localStorage.setItem('theme', 'default')
+    }
+    
+    changeTheme(localStorage.getItem("theme"), true)
+  }, [])
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +44,7 @@ function App() {
   const toggleColour = () => {
     setColourOpen(colourOpen => (!colourOpen))
   }
+
   
   return (
     <div className="App">

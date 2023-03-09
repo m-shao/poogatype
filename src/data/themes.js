@@ -29,11 +29,21 @@ export const themes = {
 
         "creme": {
             "--text-primary": "#994F00",
-            "--text-secondary": "#FFBA71",
+            "--text-secondary": "#A49A64",
             "--highlight-primary": "#D62828",
             "--highlight-secondary": "#8A1A1A",
             "--base-primary": "#EAE2B7",
-            "--base-secondary": "#F8F4DE",
-            "--error-primary": "#ED5F5F"
+            "--base-secondary": "#D5CB99",
+            "--error-primary": "#319CFF"
+        },
+
+        "forest": {
+            "--text-primary": "#D9D0DE",
+            "--text-secondary": "#174B38",
+            "--highlight-primary": "#A04668",
+            "--highlight-secondary": "#D1589A",
+            "--base-primary": "#0C1713",
+            "--base-secondary": "#080C0A",
+            "--error-primary": "#D62828"
         } 
 }

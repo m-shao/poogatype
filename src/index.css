@@ -22,26 +22,6 @@ body {
   --base-secondary: #171717;
   --error-primary: #ef4444;
 }
-/* 
-:root {
-  --text-primary: #4b4b4b;
-  --text-secondary: #a3a3a3;
-  --highlight-primary: #818cf8;
-  --highlight-secondary: #4f46e5;
-  --base-primary: #ffffff;
-  --base-secondary: #cfcfcf;
-  --error-primary: #ef4444;
-} */
-/* 
-:root {
-  --text-primary: #9E2A2B;
-  --text-secondary: #E45556;
-  --highlight-primary: #124559;
-  --highlight-secondary: #01161E;
-  --base-primary: #AEC3B0;
-  --base-secondary: #96B899;
-  --error-primary: #739b76;
-} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

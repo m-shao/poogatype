@@ -67,7 +67,7 @@ const LoginPage = ( ) => {
               
               <h2>Email</h2>
               <input 
-                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-[color:var(--text-primary)]'
+                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-white border-black border'
                 placeholder="Type your email"
                 onChange={(e) => {
                   setNewEmail(e.target.value)
@@ -75,7 +75,7 @@ const LoginPage = ( ) => {
 
               <h2>Password</h2>
               <input
-                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-[color:var(--text-primary)]'
+                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-white border-black border'
                 placeholder="Type your password"
                 type='password'
                 onChange={(e) => {
@@ -84,11 +84,11 @@ const LoginPage = ( ) => {
             </div>
             <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={createAccount}>
               <img src={newUserIcon} alt="create account" />
-              <h2 className="text-[color:var(--base-primary)]">Create Account</h2>
+              <h2 className="text-white">Create Account</h2>
             </button>       
             <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
               <img src={newUserIcon} alt="create account" />
-              <h2 className="text-[color:var(--base-primary)]">Sign Out</h2>
+              <h2 className="text-white">Sign Out</h2>
             </button>         
           </div>
 
@@ -99,14 +99,14 @@ const LoginPage = ( ) => {
             <div className='flex flex-col gap-2'>
               <h2>Email</h2>
               <input 
-                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-[color:var(--text-primary)] w-full'
+                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-white border-black border w-full'
                 placeholder="Type your email"
                 onChange={(e) => {
                     setEmail(e.target.value)
               }}/>
               <h2>Password</h2>
               <input
-                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-[color:var(--text-primary)] w-full'
+                className='block h-10 p-4 rounded-lg text-[color:var(--base-primary)] bg-white border-black border w-full'
                 placeholder="Type your password"
                 type='password'
                 onChange={(e) => {
@@ -120,12 +120,12 @@ const LoginPage = ( ) => {
 
             <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={signIn}>
               <img src={signInIcon} alt="sign in" />
-              <h2 className="text-[color:var(--base-primary)]">Sign In</h2>
+              <h2 className="text-white">Sign In</h2>
             </button>
 
             <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={signInWithGoogle}>
               <img src={googleSignInIcon} alt="sign in with google" />
-              <h2 className="text-[color:var(--base-primary)]">Google Sign In</h2>
+              <h2 className="text-white">Google Sign In</h2>
             </button>
           </div>
         </div>

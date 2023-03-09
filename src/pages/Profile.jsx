@@ -83,7 +83,7 @@ function Profile() {
         <h1>Account Settings</h1>
         <h1>Joined {joinDate.slice(4, 17)}</h1>
     </div>
-    <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center' onClick={signUserOut}>
+    <button className='p-2 rounded-lg bg-[color:var(--highlight-primary)] hover:bg-[color:var(--highlight-secondary)] transition-all flex gap-3 items-center justify-center text-white' onClick={signUserOut}>
         <h2>Sign Out</h2>
     </button>  
       

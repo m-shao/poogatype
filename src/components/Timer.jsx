@@ -23,7 +23,7 @@ function Timer({stop, callback, reset}) {
   }, [seconds])
   
   return (
-  <div className=''>
+  <div>
     {seconds}
   </div>
   )
