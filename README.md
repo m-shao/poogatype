@@ -4,7 +4,7 @@
 
 ![rainbow divider](readmeImages/rainbow.png)
 
-# :computer: Minimalistic Typing Experience
+# :computer: Minimalistic Typing Text
 Open Source Minialistic Typing App <br>
 Inspired by Monkey Type
 
@@ -26,7 +26,7 @@ Inspired by Monkey Type
 ![rainbow divider](readmeImages/rainbow.png)
 
 # :chart_with_upwards_trend: Secure Login, Keep Track of Your Stats
-### Login with Email and Password or Email
+### Login with Email and Password or Gmail(Google)
 
 ![Sample Gif](readmeImages/PoogaTypeLogin.png)
 
