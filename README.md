@@ -1,6 +1,7 @@
 # **PoogaType** 
 ## Simple, Minimalistic Typing Experience
 ![Sample Gif](readmeImages/PoogaTypeMain.png)
+<a href="https://poogatype.web.app/">Live Website</a>
 
 ![rainbow divider](readmeImages/rainbow.png)
 
