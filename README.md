@@ -7,7 +7,6 @@
 
 # :computer: Minimalistic Typing Text
 Open Source Minialistic Typing App <br>
-Inspired by Monkey Type
 
 ![Sample Gif](readmeImages/TypeSample.gif)
 
@@ -21,7 +20,6 @@ Inspired by Monkey Type
 ![Sample Gif](readmeImages/PoogaTypeThemeSelector.png)
 ![Sample Gif](readmeImages/PoogaTypeLight.png)
 ![Sample Gif](readmeImages/PoogaTypeMint.png)
-![Sample Gif](readmeImages/PoogaTypeCreme.png)
 ![Sample Gif](readmeImages/PoogaTypeForest.png)
 
 ![rainbow divider](readmeImages/rainbow.png)
